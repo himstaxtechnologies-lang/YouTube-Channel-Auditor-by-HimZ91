@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>YouTube Channel Auditor created by Himz91</title>
+<meta name="description" content="Free YouTube channel auditor: score any public channel on consistency, engagement, reach and optimization, compare channels and track progress. Created by Himz91.">
+<meta property="og:title" content="YouTube Channel Auditor created by Himz91">
+<meta property="og:description" content="Score any public YouTube channel, compare competitors and track your progress over time.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E📊%3C/text%3E%3C/svg%3E">
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<style>
+:root{--bg:#f6f7f4;--surface:#fff;--ink:#1b2320;--muted:#5d6a65;--line:#dde2dc;--accent:#0f766e;--good:#15803d;--mid:#b45309;--bad:#b91c1c}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121815;--surface:#1b2420;--ink:#e8eee9;--muted:#9aa8a1;--line:#2d3a34;--accent:#2dd4bf;--good:#4ade80;--mid:#fbbf24;--bad:#f87171}}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.55 "Segoe UI",system-ui,-apple-system,sans-serif}
+main{max-width:980px;margin:0 auto;padding:28px 18px 70px}
+h1{font:700 28px/1.2 Georgia,"Times New Roman",serif;margin:0 0 6px}
+h2{font:700 20px/1.3 Georgia,serif;margin:34px 0 12px}
+p.lead{color:var(--muted);margin:0 0 22px;max-width:62ch}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:18px}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+label{display:block;font-size:14px;color:var(--muted);margin-bottom:4px}
+input{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit}
+input:focus,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.f{flex:1 1 280px}
+button{padding:10px 18px;border:0;border-radius:8px;background:var(--accent);color:#fff;font:600 15px inherit;cursor:pointer}
+@media (prefers-color-scheme:dark){button{color:#06201c}}
+button.alt{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.hint{font-size:13px;color:var(--muted);margin:10px 0 0}
+#status,#cmpStatus{margin-top:14px;color:var(--muted)}
+#status.err,#cmpStatus.err{color:var(--bad)}
+.hero{display:flex;gap:22px;align-items:center;flex-wrap:wrap}
+.ring{width:132px;height:132px;flex:none}
+.ch{display:flex;gap:14px;align-items:center}
+.ch img{width:56px;height:56px;border-radius:50%;object-fit:cover}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.stat{border:1px solid var(--line);border-radius:8px;padding:12px;background:var(--surface)}
+.stat b{display:block;font-size:22px}
+.stat span{font-size:13px;color:var(--muted)}
+.bar{height:8px;background:var(--line);border-radius:4px;overflow:hidden;margin-top:6px}
+.bar i{display:block;height:100%}
+.cat{display:flex;justify-content:space-between;gap:10px;font-weight:600}
+.recs{list-style:none;padding:0;margin:0}
+.recs li{padding:12px 14px;border-left:4px solid var(--line);background:var(--surface);border-radius:0 8px 8px 0;margin-bottom:8px}
+.recs li.high{border-color:var(--bad)}.recs li.med{border-color:var(--mid)}.recs li.ok{border-color:var(--good)}
+.recs small{display:block;color:var(--muted)}
+.scroll{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+td.t{white-space:normal;min-width:220px}
+.hidden{display:none}
+.tabs{display:flex;gap:6px;margin:22px 0 14px;border-bottom:1px solid var(--line)}
+.tab{background:transparent;color:var(--muted);border:1px solid transparent;border-bottom:0;border-radius:8px 8px 0 0;margin-bottom:-1px}
+.tab.on{background:var(--surface);color:var(--ink);border-color:var(--line)}
+.cmp td:first-child,.cmp th:first-child{position:sticky;left:0;background:var(--surface)}
+.cmp td b{color:var(--good)}
+.by{display:block;font:400 15px "Segoe UI",system-ui,sans-serif;color:var(--muted);margin-top:4px}
+.guide{margin-bottom:14px}
+.guide summary{cursor:pointer;font-weight:600}
+.guide ol{margin:12px 0 0;padding-left:22px}
+.guide li{margin-bottom:6px}
+footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);color:var(--muted);font-size:13px}
+@media print{.noprint{display:none}}
+</style>
+</head>
+<body>
+<main>
+<h1>YouTube Channel Auditor <span class="by">created by Himz91</span></h1>
+<p class="lead">Enter any public channel and get a scored audit of upload consistency, engagement, reach, video optimization and channel profile, with a fix list ordered by impact.</p>
+
+<details class="panel guide noprint" id="guide">
+<summary>First time here? Get your free API key (about 2 minutes)</summary>
+<ol>
+<li>Go to <b>console.cloud.google.com</b> and sign in with any Google account.</li>
+<li>Click the project menu at the top, choose <b>New Project</b>, name it anything, and click <b>Create</b>.</li>
+<li>Open <b>APIs &amp; Services</b>, then <b>Library</b>. Search for <b>YouTube Data API v3</b> and click <b>Enable</b>.</li>
+<li>Open <b>APIs &amp; Services</b>, then <b>Credentials</b>. Click <b>Create credentials</b>, choose <b>API key</b>, and copy the key.</li>
+<li>Paste the key in the box below. It is saved in your browser only.</li>
+</ol>
+<p class="hint">The key is free and needs no credit card. You get 10,000 units a day and each audit uses about 4. Every person uses their own key, so never share yours.</p>
+</details>
+
+<section class="panel noprint">
+<div class="f"><label for="key">YouTube Data API key</label><input id="key" type="password" autocomplete="off" placeholder="AIza..."></div>
+<p class="hint">Your key is stored in this browser only and is sent only to YouTube.</p>
+</section>
+<nav class="tabs noprint" role="tablist" aria-label="Sections">
+<button class="tab on" data-t="auditTab" role="tab">Audit</button><button class="tab" data-t="compareTab" role="tab">Compare</button><button class="tab" data-t="histTab" role="tab">History</button>
+</nav>
+
+<div id="auditTab" class="tabp">
+<section class="panel noprint">
+<div class="f"><label for="chan">Channel URL, @handle or channel ID</label><input id="chan" placeholder="@yourchannel"></div>
+<div class="row" style="margin-top:14px"><button id="go">Run audit</button><button id="pdf" class="alt hidden">Print or save PDF</button><button id="json" class="alt hidden">Download JSON</button></div>
+<div id="status" role="status"></div>
+</section>
+
+<div id="out" class="hidden">
+<h2>Overview</h2>
+<section class="panel hero" id="hero"></section>
+<h2>Scores</h2>
+<section class="panel" id="cats"></section>
+<h2>What to fix first</h2>
+<ul class="recs" id="recs"></ul>
+<h2>Numbers behind the audit</h2>
+<section class="grid" id="stats"></section>
+<h2>Recent uploads</h2>
+<section class="panel scroll"><table id="tbl"></table></section>
+</div>
+</div>
+
+<div id="compareTab" class="tabp hidden">
+<section class="panel noprint">
+<div class="row">
+<div class="f"><label for="c1">Your channel</label><input class="cmpin" id="c1" placeholder="@yourchannel"></div>
+<div class="f"><label for="c2">Competitor</label><input class="cmpin" id="c2" placeholder="@competitor"></div>
+<div class="f"><label for="c3">Another competitor (optional)</label><input class="cmpin" id="c3" placeholder="@another"></div>
+</div>
+<div class="row" style="margin-top:14px"><button id="cmpGo">Compare channels</button></div>
+<div id="cmpStatus" role="status"></div>
+</section>
+<div id="cmpOut" class="hidden">
+<h2>Side by side</h2>
+<section class="panel scroll"><table class="cmp" id="cmpTbl"></table></section>
+<h2>Where your channel trails</h2>
+<ul class="recs" id="cmpGaps"></ul>
+</div>
+</div>
+
+<div id="histTab" class="tabp hidden">
+<div class="row noprint" style="margin-bottom:14px;align-items:center">
+<span class="hint" style="margin:0;flex:1 1 240px">Every audit and comparison is saved in this browser, so you can track each channel's score over time.</span>
+<button id="hExp" class="alt">Download history</button><button id="hClr" class="alt">Clear history</button>
+</div>
+<div id="histBody"></div>
+</div>
+<footer>YouTube Channel Auditor, created by Himz91. Free to share. Your API key and audit history stay in your own browser, and requests go only to YouTube's official API.</footer>
+</main>
+
+<script>
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const API='https://www.googleapis.com/youtube/v3/';
+const PARTS='snippet,statistics,contentDetails,brandingSettings';
+let KEY='',REPORT=null;
+try{KEY=localStorage.getItem('yt_audit_key')||'';$('key').value=KEY;$('chan').value=localStorage.getItem('yt_audit_chan')||''}catch(e){}
+if(!KEY)$('guide').open=true;
+
+async function yt(path,params){
+  const u=new URL(API+path);
+  Object.entries({...params,key:KEY}).forEach(([k,v])=>u.searchParams.set(k,v));
+  const r=await fetch(u);const j=await r.json();
+  if(!r.ok)throw new Error(j.error?.message||('Request failed: '+r.status));
+  return j;
+}
+async function resolve(input){
+  input=input.trim();
+  let m=input.match(/channel\/(UC[\w-]{20,})/)||input.match(/^(UC[\w-]{20,})$/);
+  if(m)return (await yt('channels',{part:PARTS,id:m[1]})).items?.[0];
+  m=input.match(/@([\w.\-]+)/);
+  const h=m?m[1]:input.replace(/^https?:\/\/(www\.)?youtube\.com\/(c|user)\//,'').split(/[/?]/)[0];
+  let r=await yt('channels',{part:PARTS,forHandle:'@'+h});
+  if(r.items?.[0])return r.items[0];
+  const s=await yt('search',{part:'snippet',type:'channel',q:h,maxResults:1});
+  const id=s.items?.[0]?.snippet?.channelId||s.items?.[0]?.id?.channelId;
+  return id?(await yt('channels',{part:PARTS,id})).items[0]:null;
+}
+const dur=iso=>{const m=/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/.exec(iso||'')||[];return (+m[1]||0)*3600+(+m[2]||0)*60+(+m[3]||0)};
+const med=a=>{if(!a.length)return 0;const s=[...a].sort((x,y)=>x-y),k=s.length>>1;return s.length%2?s[k]:(s[k-1]+s[k])/2};
+const avg=a=>a.length?a.reduce((x,y)=>x+y,0)/a.length:0;
+const fmt=n=>n>=1e6?(n/1e6).toFixed(1)+'M':n>=1e3?(n/1e3).toFixed(1)+'K':String(Math.round(n));
+const clamp=(n,a=0,b=100)=>Math.max(a,Math.min(b,n));
+const tier=(v,steps)=>{for(const[t,s]of steps)if(v>=t)return s;return steps[steps.length-1][1]};
+
+async function audit(input){
+  const ch=await resolve(input);
+  if(!ch)throw new Error('Channel not found. Check the URL or handle.');
+  const up=ch.contentDetails.relatedPlaylists.uploads;
+  const pl=await yt('playlistItems',{part:'contentDetails',playlistId:up,maxResults:50});
+  const ids=pl.items.map(i=>i.contentDetails.videoId).join(',');
+  const vids=ids?(await yt('videos',{part:'snippet,statistics,contentDetails',id:ids,maxResults:50})).items:[];
+  const V=vids.map(v=>({id:v.id,title:v.snippet.title,date:new Date(v.snippet.publishedAt),desc:v.snippet.description||'',tags:v.snippet.tags||[],
+    secs:dur(v.contentDetails.duration),views:+v.statistics.viewCount||0,likes:+v.statistics.likeCount||0,comments:+v.statistics.commentCount||0}))
+    .sort((a,b)=>b.date-a.date);
+  if(V.length<3)throw new Error('Not enough public videos to audit (need at least 3).');
+  const s=ch.statistics,subs=s.hiddenSubscriberCount?null:+s.subscriberCount,now=Date.now();
+  const gaps=[];for(let i=0;i<V.length-1;i++)gaps.push((V[i].date-V[i+1].date)/864e5);
+  const avgGap=avg(gaps),daysSince=(now-V[0].date)/864e5;
+  const last30=V.filter(v=>now-v.date<30*864e5).length;
+  const eng=V.map(v=>v.views?(v.likes+v.comments)/v.views*100:0);
+  const avgEng=avg(eng),medViews=med(V.map(v=>v.views));
+  const ratio=subs?medViews/subs:null;
+  const shorts=V.filter(v=>v.secs<=180).length;
+  const titleOk=V.filter(v=>v.title.length>=30&&v.title.length<=70).length/V.length;
+  const descOk=V.filter(v=>v.desc.length>=150).length/V.length;
+  const tagsOk=V.filter(v=>v.tags.length>=5).length/V.length;
+  const brand=ch.brandingSettings||{};
+  const prof={desc:(ch.snippet.description||'').length>=100,banner:!!brand.image?.bannerExternalUrl,kw:!!brand.channel?.keywords,country:!!ch.snippet.country,handle:!!ch.snippet.customUrl};
+
+  const consistency=clamp((avgGap<=3?100:avgGap<=7?85:avgGap<=14?65:avgGap<=30?40:15)-(daysSince>30?25:daysSince>14?10:0));
+  const engagement=avgEng>=5?100:avgEng>=3?80:avgEng>=1.5?60:avgEng>=.7?40:20;
+  const reach=ratio==null?50:ratio>=.5?100:ratio>=.2?80:ratio>=.1?60:ratio>=.03?40:20;
+  const optimization=Math.round((titleOk+descOk+tagsOk)/3*100);
+  const profile=Math.round(Object.values(prof).filter(Boolean).length/5*100);
+  const cats=[
+    ['Upload consistency',consistency,25,`Average gap ${avgGap.toFixed(1)} days, last upload ${Math.round(daysSince)} days ago`],
+    ['Engagement',engagement,25,`Likes and comments average ${avgEng.toFixed(2)}% of views`],
+    ['Reach',reach,20,ratio==null?'Subscriber count is hidden':`Typical video gets ${(ratio*100).toFixed(0)}% of subscriber count in views`],
+    ['Video optimization',optimization,20,`${Math.round(titleOk*100)}% titles 30–70 chars, ${Math.round(descOk*100)}% descriptions 150+ chars, ${Math.round(tagsOk*100)}% with 5+ tags`],
+    ['Channel profile',profile,10,`${Object.values(prof).filter(Boolean).length} of 5 profile items complete`]
+  ];
+  const total=Math.round(cats.reduce((a,c)=>a+c[1]*c[2],0)/100);
+
+  const recs=[];
+  const R=(p,t,d)=>recs.push({p,t,d});
+  if(daysSince>30)R('high','Channel has gone quiet',`Last upload was ${Math.round(daysSince)} days ago. Publish soon and set a repeatable schedule.`);
+  else if(avgGap>14)R('high','Uploads are too far apart',`You average one video every ${avgGap.toFixed(0)} days. Aim for at least weekly so viewers and the algorithm see a rhythm.`);
+  else if(avgGap>7)R('med','Tighten your upload rhythm',`Average gap is ${avgGap.toFixed(1)} days. Weekly or better lifts return visits.`);
+  if(avgEng<1.5)R('high','Low like and comment rate',`Only ${avgEng.toFixed(2)}% of viewers react. Add a spoken question near the end, pin a comment, and test stronger opening seconds.`);
+  if(ratio!=null&&ratio<.1)R('high','Videos reach few of your subscribers',`Median views are ${fmt(medViews)} against ${fmt(subs)} subscribers. Test new thumbnails and titles on your best-performing topics.`);
+  if(titleOk<.7)R('med','Rework title length',`${Math.round((1-titleOk)*100)}% of titles fall outside 30–70 characters, which truncates or underinforms in search and suggested feeds.`);
+  if(descOk<.7)R('med','Write fuller descriptions',`${Math.round((1-descOk)*100)}% of descriptions are under 150 characters. Put the main keywords and a short summary in the first two lines.`);
+  if(tagsOk<.5)R('med','Add tags',`Most videos have fewer than 5 tags. Tags help with misspellings and related topics.`);
+  if(!prof.desc)R('med','Expand the channel description','Use 100+ characters explaining who the channel is for and what to expect.');
+  if(!prof.banner)R('med','Add a channel banner','A banner makes the channel look finished and sets the theme.');
+  if(!prof.kw)R('med','Add channel keywords','Fill in keywords in YouTube Studio under Settings, Channel, Basic info.');
+  if(!prof.country)R('ok','Set a country','Helps with local recommendations.');
+  if(shorts===V.length)R('ok','Only short-form uploads','Consider a few longer videos to grow watch time and a broader audience.');
+  else if(shorts===0)R('ok','No Shorts in recent uploads','Short clips can bring in new viewers cheaply.');
+  const top=[...V].sort((a,b)=>b.views-a.views)[0];
+  R('ok','Repeat what works',`Your top recent video is “${top.title}” with ${fmt(top.views)} views. Make more videos on that topic or in that format.`);
+
+  const byDay=[0,1,2,3,4,5,6].map(d=>{const x=V.filter(v=>v.date.getDay()===d);return{d,n:x.length,avg:avg(x.map(v=>v.views))}}).filter(x=>x.n>=2).sort((a,b)=>b.avg-a.avg)[0];
+  const names=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const stats=[
+    ['Subscribers',subs==null?'Hidden':fmt(subs),'Total channel subscribers'],
+    ['Total views',fmt(+s.viewCount),'All time'],
+    ['Videos',s.videoCount,'Public uploads'],
+    ['Median views',fmt(medViews),`Across last ${V.length} uploads`],
+    ['Avg engagement',avgEng.toFixed(2)+'%','Likes plus comments per view'],
+    ['Uploads last 30 days',last30,'Count of videos'],
+    ['Short-form share',Math.round(shorts/V.length*100)+'%','Videos 3 minutes or less'],
+    ['Best day',byDay?names[byDay.d]:'Not enough data',byDay?`${fmt(byDay.avg)} avg views, ${byDay.n} videos`:'Needs 2+ videos on a day']
+  ];
+  return{ch,V,cats,total,recs,stats,medViews,avgEng,at:new Date().toISOString()};
+}
+
+const col=v=>v>=75?'var(--good)':v>=50?'var(--mid)':'var(--bad)';
+function render(r){
+  const c=2*Math.PI*54,off=c*(1-r.total/100);
+  $('hero').innerHTML=`<svg class="ring" viewBox="0 0 132 132" role="img" aria-label="Overall score ${r.total} out of 100"><circle cx="66" cy="66" r="54" fill="none" stroke="var(--line)" stroke-width="12"/><circle cx="66" cy="66" r="54" fill="none" stroke="${col(r.total)}" stroke-width="12" stroke-linecap="round" stroke-dasharray="${c}" stroke-dashoffset="${off}" transform="rotate(-90 66 66)"/><text x="66" y="74" text-anchor="middle" font-size="32" font-weight="700" fill="currentColor">${r.total}</text></svg>
+  <div><div class="ch"><img src="${esc(r.ch.snippet.thumbnails?.default?.url||'')}" alt=""><div><b style="font-size:20px">${esc(r.ch.snippet.title)}</b><div style="color:var(--muted)">${esc(r.ch.snippet.customUrl||'')}</div></div></div>
+  <p style="margin:12px 0 0;max-width:52ch">${r.total>=75?'Healthy channel. Focus on the smaller fixes below.':r.total>=50?'Solid base with clear room to grow. Start with the high-priority items.':'Several basics need work. Fix the high-priority items first.'}</p></div>`;
+  $('cats').innerHTML=r.cats.map(([n,v,w,d])=>`<div style="margin-bottom:16px"><div class="cat"><span>${esc(n)} <small style="font-weight:400;color:var(--muted)">(weight ${w}%)</small></span><span style="color:${col(v)}">${Math.round(v)}</span></div><div class="bar"><i style="width:${v}%;background:${col(v)}"></i></div><small style="color:var(--muted)">${esc(d)}</small></div>`).join('');
+  const order={high:0,med:1,ok:2};
+  $('recs').innerHTML=r.recs.sort((a,b)=>order[a.p]-order[b.p]).map(x=>`<li class="${x.p}"><b>${esc(x.t)}</b><small>${esc(x.d)}</small></li>`).join('');
+  $('stats').innerHTML=r.stats.map(([a,b,c])=>`<div class="stat"><span>${esc(a)}</span><b>${esc(b)}</b><span>${esc(c)}</span></div>`).join('');
+  $('tbl').innerHTML=`<tr><th>Title</th><th>Date</th><th>Length</th><th>Views</th><th>Engagement</th></tr>`+r.V.map(v=>`<tr><td class="t"><a href="https://www.youtube.com/watch?v=${esc(v.id)}" target="_blank" rel="noopener" style="color:var(--accent)">${esc(v.title)}</a></td><td>${v.date.toISOString().slice(0,10)}</td><td>${Math.floor(v.secs/60)}:${String(v.secs%60).padStart(2,'0')}</td><td>${v.views.toLocaleString()}</td><td>${v.views?((v.likes+v.comments)/v.views*100).toFixed(2)+'%':'–'}</td></tr>`).join('');
+  $('out').classList.remove('hidden');$('pdf').classList.remove('hidden');$('json').classList.remove('hidden');
+}
+
+$('go').onclick=async()=>{
+  setKey();
+  const st=$('status');st.className='';
+  if(!KEY||!$('chan').value.trim()){st.className='err';st.textContent='Enter both an API key and a channel.';return}
+  try{localStorage.setItem('yt_audit_chan',$('chan').value)}catch(e){}
+  $('go').disabled=true;st.textContent='Fetching channel data…';
+  try{
+    REPORT=await audit($('chan').value);render(REPORT);
+    const prev=loadH().filter(e=>e.id===REPORT.ch.id).pop();
+    saveH(REPORT);
+    const d=prev?REPORT.total-prev.total:null;
+    st.textContent='Audit complete and saved to History.'+(d==null?'':` Score ${d>=0?'+':''}${d} since ${prev.at.slice(0,10)}.`);
+  }catch(e){st.className='err';st.textContent=errMsg(e)}
+  $('go').disabled=false;
+};
+$('pdf').onclick=()=>window.print();
+$('json').onclick=()=>{
+  const blob=new Blob([JSON.stringify({channel:REPORT.ch.snippet.title,score:REPORT.total,categories:REPORT.cats.map(c=>({name:c[0],score:c[1],note:c[3]})),recommendations:REPORT.recs,generated:REPORT.at},null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='channel-audit.json';a.click();
+};
+/* tabs */
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x===b));
+  document.querySelectorAll('.tabp').forEach(p=>p.classList.toggle('hidden',p.id!==b.dataset.t));
+  if(b.dataset.t==='histTab')renderHistory();
+  if(b.dataset.t==='compareTab'&&!$('c1').value)$('c1').value=$('chan').value;
+});
+function setKey(){KEY=$('key').value.trim();try{localStorage.setItem('yt_audit_key',KEY)}catch(e){}return KEY}
+const errMsg=e=>{
+  const m=String(e.message||e);
+  if(/API key not valid|API_KEY_INVALID/i.test(m))return 'That API key is not valid. Copy it again from Google Cloud Console, under APIs & Services, Credentials.';
+  if(/quota/i.test(m))return 'The daily API quota is used up. It resets at midnight Pacific Time. You can also create a key in a new Google Cloud project.';
+  if(/has not been used|accessNotConfigured|is disabled/i.test(m))return "YouTube Data API v3 is not enabled for this key's project. Enable it under APIs & Services, Library, then try again.";
+  if(/Failed to fetch|NetworkError/i.test(m))return 'Could not reach YouTube. Check your internet connection and try again.';
+  return m;
+};
+
+/* history */
+const HK='yt_audit_history';
+function loadH(){try{return JSON.parse(localStorage.getItem(HK)||'[]')}catch(e){return[]}}
+function saveH(r){
+  const h=loadH(),s=r.ch.statistics;
+  h.push({id:r.ch.id,name:r.ch.snippet.title,at:r.at,total:r.total,cats:r.cats.map(c=>Math.round(c[1])),subs:s.hiddenSubscriberCount?null:+s.subscriberCount,views:+s.viewCount,med:Math.round(r.medViews),eng:+r.avgEng.toFixed(2)});
+  try{localStorage.setItem(HK,JSON.stringify(h.slice(-300)))}catch(e){}
+}
+function spark(g){
+  const w=600,h=90,n=g.length,px=i=>n===1?w/2:20+i*(w-40)/(n-1),py=v=>h-10-(v/100)*(h-20);
+  const pts=g.map((e,i)=>px(i)+','+py(e.total)).join(' ');
+  return `<svg viewBox="0 0 ${w} ${h}" style="width:100%;max-width:600px;height:auto;margin:10px 0" role="img" aria-label="Score over time"><polyline points="${pts}" fill="none" stroke="var(--accent)" stroke-width="2"/>${g.map((e,i)=>`<circle cx="${px(i)}" cy="${py(e.total)}" r="4" fill="var(--accent)"><title>${e.total} on ${esc(e.at.slice(0,10))}</title></circle>`).join('')}</svg>`;
+}
+function renderHistory(){
+  const h=loadH(),box=$('histBody');
+  if(!h.length){box.innerHTML='<p class="hint">No audits saved yet. Run an audit and it will appear here.</p>';return}
+  const groups={};h.forEach(e=>(groups[e.id]=groups[e.id]||[]).push(e));
+  box.innerHTML=Object.values(groups).map(g=>{
+    const last=g[g.length-1],d=last.total-g[0].total;
+    const rows=g.map((e,i)=>{const p=g[i-1],dd=p?e.total-p.total:null;
+      return `<tr><td>${esc(e.at.slice(0,16).replace('T',' '))}</td><td>${e.total}</td><td style="color:${dd==null?'inherit':dd>=0?'var(--good)':'var(--bad)'}">${dd==null?'–':(dd>=0?'+':'')+dd}</td><td>${e.subs==null?'Hidden':e.subs.toLocaleString()}</td><td>${e.views.toLocaleString()}</td><td>${e.eng}%</td></tr>`}).reverse().join('');
+    return `<section class="panel" style="margin-bottom:14px"><div class="cat"><span>${esc(last.name)}</span><span style="color:${col(last.total)}">${last.total}</span></div>
+      <small style="color:var(--muted)">${g.length} audit${g.length>1?'s':''}${g.length>1?`, ${d>=0?'+':''}${d} since the first`:''}</small>${spark(g)}
+      <div class="scroll"><table><tr><th>Date</th><th>Score</th><th>Change</th><th>Subscribers</th><th>Total views</th><th>Engagement</th></tr>${rows}</table></div></section>`;
+  }).join('');
+}
+$('hExp').onclick=()=>{
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(loadH(),null,2)],{type:'application/json'}));a.download='audit-history.json';a.click();
+};
+$('hClr').onclick=()=>{if(confirm('Delete all saved audits from this browser?')){try{localStorage.removeItem(HK)}catch(e){}renderHistory()}};
+
+/* compare */
+function renderCompare(res){
+  const row=(label,vals,best)=>{const m=best?Math.max(...vals.map(Number)):null;
+    return `<tr><td>${esc(label)}</td>`+vals.map(v=>`<td>${best&&Number(v)===m?'<b>'+esc(v)+'</b>':esc(v)}</td>`).join('')+'</tr>'};
+  let html='<tr><th></th>'+res.map(r=>`<th>${esc(r.ch.snippet.title)}</th>`).join('')+'</tr>';
+  html+=row('Overall score',res.map(r=>r.total),true);
+  res[0].cats.forEach((c,i)=>html+=row(c[0],res.map(r=>Math.round(r.cats[i][1])),true));
+  res[0].stats.forEach((x,i)=>html+=row(x[0],res.map(r=>r.stats[i][1]),false));
+  $('cmpTbl').innerHTML=html;
+  const me=res[0];
+  const gaps=me.cats.map((c,i)=>({n:c[0],d:Math.round(Math.max(...res.map(r=>r.cats[i][1]))-c[1])})).filter(g=>g.d>=10).sort((a,b)=>b.d-a.d);
+  $('cmpGaps').innerHTML=gaps.length
+    ?gaps.map(g=>`<li class="${g.d>=25?'high':'med'}"><b>${esc(g.n)}</b><small>${esc(me.ch.snippet.title)} trails the best channel here by ${g.d} points. Run it in the Audit tab for specific fixes.</small></li>`).join('')
+    :`<li class="ok"><b>No major gaps</b><small>${esc(me.ch.snippet.title)} is within 10 points of the best channel in every category.</small></li>`;
+  $('cmpOut').classList.remove('hidden');
+}
+$('cmpGo').onclick=async()=>{
+  setKey();
+  const st=$('cmpStatus');st.className='';
+  const ins=[...document.querySelectorAll('.cmpin')].map(i=>i.value.trim()).filter(Boolean);
+  if(!KEY||ins.length<2){st.className='err';st.textContent='Enter an API key and at least two channels.';return}
+  $('cmpGo').disabled=true;
+  const res=[],errs=[];
+  for(const i of ins){
+    st.textContent=`Auditing ${i}…`;
+    try{const r=await audit(i);saveH(r);res.push(r)}catch(e){errs.push(`${i}: ${errMsg(e)}`)}
+  }
+  if(res.length>=2){renderCompare(res);st.textContent=errs.length?'Compared with some skipped: '+errs.join('; '):'Comparison complete and saved to History.';if(errs.length)st.className='err'}
+  else{st.className='err';st.textContent='Need at least two valid channels. '+errs.join('; ')}
+  $('cmpGo').disabled=false;
+};
+</script>
+</body>
+</html>
